@@ -1,0 +1,2 @@
+Or: search for first truthy value and if not find then return last falsy value and 
+AND: search for first falsy value if not find then return last truthy value....so we use OR operator for short circuiting and not AND

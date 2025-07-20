@@ -1,0 +1,734 @@
+alert("JS"); -> to popup message.
+prompt("JS"); -> similar to alert but can take input also
+console.log("JS") -> log(print) message to console in new(next) line.
+
+-> Dynamically typed language(don't need to inform about any data type)
+
+==>> variables: containers for data
+
+1) var : (old choice) (creates confusion as redeclaration is possible)
+- can be redeclared and updated
+- global scope
+
+2) let:  
+- cannot be redeclared but can be updated
+- block scope
+
+3) const: (maximum preferred)
+- cannot be redeclared and cannot be updated
+- block scope
+
+* By default when any value is not given while declaring it as var or let, and trying to print it will give result as "undefined". const requires value compulsory while declaring.
+
+==> Data Types:
+
+* Primitive:-
+
+1) Number: eg. age=24.5;
+ 
+->typeof(age); => number
+
+2) String:
+3) Boolean:
+4) Undefined:
+5) Null: absence of object
+6) BigInt: eg. let x=BigInt("1234");
+7) Symbol: eg. let s=Symbol(Hello!);
+
+* Non-Primitive:-
+
+=> Objects: Collection of values
+-key value pair
+
+eg. const student={
+name : "Yashvi",
+age : 18,
+pass : true,
+}; 
+
+Note: we can change value of any key even if the object is declared as const.
+eg. student["name"]="Shweta" is possible.
+to print only name: student["name"]
+
+* general form to print any key's value:
+
+1) console.log(objectname.key);
+2) console.log(objectname["key"]);
+
+* To check the datatype of any variable:
+
+eg. age=24.5;
+ 
+->typeof age; => number
+
+* To check datatype of key in objects:
+
+eg. console.log(typeof student["age"]); => number
+
+==>Comments:
+
+1) Single line Comments:
+
+//This is single line comment
+
+2) Multi Line Comments:
+
+/* 
+   This is 
+multi line comment.  */
+
+==> Operators: to perform operations on data
+
+1) Arithmetic operators:
+
++,-,/,*,%
+
+eg. let a=5;
+    let b=2;
+
+    console.log("a+b:", a+b);
+
+Note: for power 
+
+console.log("a**b=",a**b); // 5^2=25
+
+Unary operators: increment and decrement 
+
+2) Assignment Operators:
+
+=,+=,-=,*=,%=,**=
+
+3) Comparison Operators: // returns true or false
+
+Equal to: ==(checks only value)
+Equal to and Type: === (strict version as checks datatype and value both)
+Not equal to: !=
+Not equal to and Type: !==
+<,>,<=,>=,
+
+eg. let a=5;
+    let b="5";
+    console.log("a==b", a==b); //true as string->number
+    console.log('a===b", a===b); //false as type  is also checked
+
+4) Logical Operators:
+
+And: &&
+Or: ||
+Not: !
+
+==> Conditional Statements:
+
+-->>  if:
+ if(condition){
+   // block of statements
+}
+
+-->> if-else: // for true and false conditions
+if(condition){} //if not executed then else will be executed
+else{}
+
+-->> if-elseif-else //for checking multiple conditions
+
+=>Ternary Operator: //simpler if-else (three operands)
+
+condition ? true output  : false output ;
+
+==> Loops: 
+
+-executing a block of code again and again.
+ 
+1) For 2) While 3) Do-while
+
+4) For-of: for strings and arrays 
+->  for(let i of strVar){
+}
+
+5) For-in: for objects
+-> for(let i in objVar){
+}
+-returns keys in each iteration so using it we can print its values as 
+console.log(student[i]);
+
+==> Strings:
+-sequence of characters to represent text
+
+*for length:
+let str="Yashvi";
+console.log(str.length);
+
+==>Template Literals: //(typeof returns string only)
+
+-way to have embedded expressions in strings
+'JS';
+
+-> Interpretation:
+ - 'string text $(expression) string text'
+
+-> Escape Characters: Length is counted as one for each escape character         used
+- \n : not to print but whenever in string written gives new line
+ 
+* String Methods:(don't change original string so when applied method we need to store it in some variable when calling it because strings are immutable)
+
+ - str.toUpperCase(); 
+ - str.toLowerCase();
+ - str.trim(); => removes whitespaces from end and start
+ - str.slice(start , end);
+
+    eg. str=abcdefg;
+       str.slice(1,3); //start value is included, end value is not 
+       ->bc
+       
+     -> if end value not mentioned,it prints all values from start index.
+       
+ - str1.concat(str2);
+ - str.replace( "searchval" , "newval");
+ - str.charAt(index);
+
+ ==> Arrays: typeof array==object
+
+- linear collection of items.
+- single array can store different types of info.(string and number) 
+
+->Creating Array:-
+
+let nums=[1,2,3,4,5];
+let str=["My","name","is"];
+
+ - length is property of array. 
+
+Note:- Mutable so we can directly change value through index.
+
+=> Array Methods:
+
+* Push(): add to end (change in original array)
+- multiple values can be added by adding with comma separation.
+* Pop(): delete from end and return(change in original array) 
+* toString(): coverts array to string(returns new string and doesnt change original array)
+* concat(): join multiple arrays and returns result(returns new array)
+* unshift(): similar to push but add to start
+* shift(): delete from start and return(change in original)
+* slice(): returns a piece of the array
+  - slice(startidx , endidx) //not include endidx
+* splice(): change original array(add , remove , replace)
+  - splice(startidx, delcount, newElement to add in startidx)
+
+ eg.  let arr=[1,2,3,4,5,6,7];
+      arr.splice(2,2,101,102);
+      ==> 1,2,101,102,5,6,7
+
+Note: when not passed deletecount as arr.splice(4), it will delete all elements starting from index 4.
+
+
+==> Functions:
+
+- block of code that performs specific task and can be invoked whenever needed
+ 
+- Work: function definition( with function keyword)
+   
+   function fun(parameter){
+      //block of code
+      // console.log("Its JS Function");
+   }
+
+- To have Work done: function call
+       while calling known as arguments
+
+Note: functions parameters are like local variables of function and has a                    block scope.
+
+=> Arrow Functions:
+
+Normal function: 
+
+function sum(a,b){
+return a+b;
+}
+
+Arrow function:
+
+const arrowsum=(a,b)=>{
+return a+b;
+}  //for single line no curly brackets are needed
+
+
+==> For Each Loop: (Method)/Callback Function
+
+- it is a function to execute for each element in the array.
+- A callback function is a function passed as an argument to another function.
+- By default for each has parameters as val,idx,arr itself
+
+    eg. let arr=[1,2,3,4,5];
+        arr.forEach(function printVal(val)//value at each index{
+      console.log(val)
+}) //No need to call this function as foreach do it. 
+
+
+Note:-- Higher order function/methods::---
+
+===>> higher order functions are the functions which takes another function as a parameter or return some functions.
+
+
+==> Important Array Methods:--
+
+1) Map (similar to for each)
+- creates a new array with results of some operation. The value its callback returns are used to form new array.
+
+arr.map(callbackFxn(value,idx,array))
+
+2) Filter 
+-creates a new array of elements that give true for a condition/filter
+eg. all even elements
+
+let arr=[1,2,3,4,5,6,7];
+let evenarr = arr.filter((val)=>{
+      return val%2===0; //2,4,6 are filtered from this array and stored in evenarr //
+})
+
+3) Reduce
+-performs some operations and reduces the array to a single value. It returns that single value.
+- when many values are there as input but output has only one value
+
+
+let arr=[1,2,3,4];
+const output =arr.reduce((res,curr) => {
+return res+curr;
+});
+console.log(output); //10
+
+-> Window Object:
+
+- The window object represents an open window in a browser. It is browser's object (not  javascript's) and is auomatically created by browser.
+- It is a global object with lots of properties and methods.
+ eg. console.log and window.console.log are same
+
+-> Creating Separate files :
+
+- increases readability
+- modularity
+- browser caching
+
+==> Document Object Model:--
+
+- When a webpage is loaded, the browser creates DOM of the page.
+
+ console.dir -> for printing object ,document's properties and methods
+
+- DOM is a tree like structure.
+- each box is known as node.
+- to make dynamic changes in html while runtime.
+
+                         window (node)
+                           |
+                           |
+                         document (node)
+                           |
+                           | 
+                         html (node)
+             -includes head      -includes body
+                *meta                 *div      *script
+                *meta                  -img
+                *title                 -h1
+                *link 
+
+==> DOM Manipulation:--
+
+1) Selecting with Id:
+document.getElementById("myid")
+Note: when the id we select doesn't exist, null is printed.
+
+2) Selecting with class:
+document.getElementsByClassName("myclass")
+Note: when the class we select doesn't exist, it is empty html collection.
+
+3) Selecting with tag:
+document.getElementsByTagName("p")
+
+-> BetterWay:-
+
+* document.querySelector("myid/.myclass/tag")
+- returns first element matching with id/class or the tag mentioned.
+
+* document.querySelectorAll(".myclass/tag")
+- returns all elements matching with class/tag.
+
+* tagName: returns tag for element nodes.
+* innerText: returns the text content of the element and all its  children.(some texts can be changed)
+* innerHTML: returns the plain text or HTML contents in the element. (Useful for changing html in runtime)
+* textContent: similar to innerText returns textual content even for hidden elements.
+
+-> FirstChild Property:
+
+- returns node's first child from the tree or null if the node has no children.
+- It can return any type of node maybe text,comment.
+- If want to get first element that is  child of another element
+  Use:  Element.FirstElementChild
+
+-> LastChild Property:
+
+- returns last child from the tree or null if there are no child nodes
+- It can return any type of node maybe text,comment.
+- If want to get last element that is  child of another element
+  Use:  Element.lastElementChild
+ 
+* DOM Tree includes :
+- text nodes
+- comment nodes
+- element nodes
+
+-> Node list work with array as when we want to access divs when divs are created through class so divs[0] gives first div and repectively.
+ 
+* Attributes:
+
+- getAtrribute(attr) : to get the attribute value
+- setAttribute(attr,value) : to set the attribute value
+
+* Style:
+
+- node.style
+- (dynamically changing css elements)
+div.style.backgroundColor= "green"; 
+div.style.visibility= "hidden";
+div.style.fontSize= "26px";
+div.innerText= "Hello";
+
+* Creating Element:
+
+let element= document.createElement("button");
+
+* Inserting Elements:
+
+- node.append(element) //adds at the end of node (inside)
+- node.prepend(element) //adds at start of the node (inside)
+- node.before(element) //adds before the node (outside)
+- node.after(element) //adds after the node (outside)
+
+* Delete Elements:
+
+-node.remove();
+ 
+=> Class List:-
+
+-collection of class attributes of the element. 
+
+==> Events:--
+
+ - The change in the state of an object is known as event.
+ - Events are fired to notify code of "interesting changes"
+   that may affect code execution.
+
+  == Mouse clicks ( single,double)
+  == Keyboard events (keypress,keyup,keydown)
+  == Form events (submit etc)
+  == Print event and many more
+
+eg. <button onclick="console.log('button was clicked');alert('hello')">Click Me! </button> //inline
+
+   - for double click: ondblclick
+   - onmouseover
+
+    -> Better way to do with functions
+    eg. let div=document.querySelector("div");
+        div.onmouseover=(){
+        console.log("Inside div");  
+        }
+
+Note: When we have performed event to same element both with inline handling and javascript, the javascript has priority and it  will be executed.
+
+* Event Object:--
+
+- It is a special object that has details about the event.(background information)
+- All event handlers have access to the Event Object's properties and methods.
+
+eg. node.event(e)=>{
+//handle here
+} 
+
+-e.target , e.type , e.clientX , e.clientY
+
+* Event Listeners:--
+
+- node.addEventListener(event,callback) //callback:function
+- node.removeEventListener(event,callback)
+  (suppose when multiple fun which do same task)
+Note: the callback reference should be same to remove
+
+eg. let btn1=document.querySelector(#btn1);
+   
+ btn1.addEventListener("click",(e)=> {
+    console.log("button 1 was clicked");
+    console.log(e.type);
+}) // e: event object
+
+==> Object-Oriented:--
+
+
+==> Prototypes in JS:--
+
+- A javascript object is an entity having a state and behaviour (properties and method) 
+- JS objects have a special property called prototype.
+- We can set a prototype using _ _proto_ _
+
+Note: If object and prototype have same method, object's method will be used.  
+
+==> Classes:-
+
+- Class is a program-code template for creating objects.
+- Those objects will have some state(variables) and some behaviour(functions) inside it.
+
+class Myclass{
+constructor(){
+}
+Method(){
+}
+}
+
+creating object:  let objectname = new Myclass();
+
+* Constructor:
+-> Constructor() method is :
+   - automatically invoked by new
+   - initializes object
+
+==> Inheritance:--
+- passing down properties and methods from parent class to child class.
+
+class Parent{}
+class Child extends Perent{}
+
+Note: If child  and Parent have same method, child's method will be used. (Method overriding)
+
+* Super Keyword:
+
+- The super keyword is used to call the constructor of its parent class to access the parent's properties and methods.
+
+eg.  super(args) // Calls Parent's Constructor
+     super.parentmethod(args) 
+
+Note: Before writing child class constructor it is necessary to call parent class constructor using super keyword.
+
+==> Error Handling:--
+     
+- try{
+    // normal code
+}catch(err)// err is error object {
+   // handling error 
+}
+
+==>  Sync:--
+
+** Synchronous:-
+
+-> Synchronous means the code runs in a particular of instructions given in the program.
+- Each instruction waits for the previous instruction to complete its execution.
+
+** Asynchronous:-
+
+-> Due to synchronous programming, sometimes important instructions get blocked due to some previous instructions, which causes a delay in the UI.
+- Asynchronous code execution allows to execute next instructions immediately and doesn't block the flow. 
+
+  - setTieout(some function , delay in millisec)
+    
+==> CallBack:--
+
+- A callback is a function passed as an argument to another function. 
+
+eg. const hello = ()=> {
+      console.log("hello");
+}
+setTimeout(hello,3000);
+
+==> Callback Hell:--
+
+- Nested callbacks stacked below one another forming a pyramid structure.  (Pyramid of Doom)
+
+- This style of programming becomes difficult to understand and manage. 
+
+function getData(dataId, getNextData){
+       setTimeout(() => {
+     console.log("data", dataId);
+
+     getNextData();
+    },2000);
+}
+getData(1, () => {
+    getData(2);       //multiple callbacks 
+}); 
+
+==> Solving Callback Hell:--
+
+- Promise is for "eventual" completion of task. It is an object in JS.
+
+let promise = new Promise ( (resolve,reject) => {...})
+                                  ||
+                              Function with two handlers
+ 
+--> Resolve and reject are callbacks provided by JS.
+
+--- Three states of promise:
+1) Pending 
+2) Fulfilled
+3) Rejected 
+
+** .then() and .catch()
+
+-> promise.then( ( res ) => {...}) // when something we need to perform after promise is fulfilled by api's request
+-> promise.catch( ( err ) ) => {...}) // when something we need to perform after promise is rejected by api's request
+
+==>Promise Chain:--
+
+- A Promise chain is a series of .then() methods that execute sequentially, one after another, using the result from the previous one.
+- A Promise represents a value that may be available now, later, or never.
+- A chain of .then() allows asynchronous operations to run in a sequence.
+- Each .then() returns a new promise, allowing chaining.
+- .catch() handles any error in the chain.
+- .finally() runs regardless of the result (success or failure).
+
+eg. asyncOperation()
+  .then(result1 => {
+    // process result1
+    return nextAsyncOperation(result1);
+  })
+  .then(result2 => {
+    // process result2
+  })
+  .catch(error => {
+    // handle any error from above
+  });
+
+==> Async-Await:--
+
+- async function always returns a promise.
+
+-> aync function myFunc() {...}
+-> await pauses the execution of its surrounding async function until the promise is settled.
+
+==> Fetch API:--
+
+- The fetch API provides an interface for fetching( sending/ receiving ) resources. 
+- It uses Request and Response objects
+- The fetch() method is used to fetch a resource (data).
+
+let promise = fetch( url, [options])
+
+eg. const URL=" https://cat-fact.herokupp.com/facts";
+    const getFacts = async () => {
+    console.log("getting data...");
+    let response = await fetch(URL);
+    console.log(response);
+};
+
+==> AJAX : asynchronous js and xml
+==> JSON : javascript object notation.
+
+==> json() method: returns a second promise that resolves wit the result of parsing the response body text as JSON. (Input is JSON, output is usable JS object)
+
+** Requests and Response:--
+
+- HTTP Verbs 
+- Response Status Code 
+- HTTP response headers also contain details about the responses, such as content type, HTTP status code etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+  
+
+ 
